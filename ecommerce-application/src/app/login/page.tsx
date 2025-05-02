@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     const data = await res.json();
     if (res.ok) {
-      router.push('/welcome');
+      router.push('/products');
     } else {
       setError(data.message || 'Something went wrong');
     }
