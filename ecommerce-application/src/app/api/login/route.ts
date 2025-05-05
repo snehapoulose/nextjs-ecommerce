@@ -1,10 +1,5 @@
 import { NextResponse } from "next/server";
-
-const users = [
-  { id: 1, username: "admin", password: "123456" },
-  { id: 2, username: "muthu", password: "pass123" },
-  { id: 3, username: "john", password: "doe123" },
-];
+import users from "@/app/data/users.json"; 
 
 export async function POST(req: Request) {
   const { username, password } = await req.json();
