@@ -16,3 +16,13 @@ export async function PUT(req: NextRequest) {
     product: products[index],
   });
 }
+
+export async function DELETE(req: NextRequest) {
+  const { id } = await req.json();
+  const index = products.findIndex((p) => p.id === id);
+  if (index === -1) {
+    return NextResponse.json({ message: "Product Not Found" }, { status: 404 });
+  }
+  products.splice(index, 1);
+  return NextResponse.json({ message: "Product Deleted" });
+}
