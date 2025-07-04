@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { addToCart } from "../redux/slices/cartSlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface Props {
   initialProducts: Product[];
 }
 
 export default function ProductListClient({ initialProducts }: Props) {
+  const router = useRouter()
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
@@ -68,12 +70,25 @@ export default function ProductListClient({ initialProducts }: Props) {
     });
     setProducts(products.filter((p) => p.id !== id));
   };
+  const handleLogOut = async ()=>{
+    await fetch("/api/logout",{
+      method:'GET',
+      credentials:'include'
+    });
+    router.push("/login")
+  };
 
   return (
     <div>
-      <Link href="/cart" className="text-blue-600 font-semibold">
+      <div className="flex justify-between items-center  mb-4">
+<Link href="/cart" className="text-blue-600 font-semibold">
         🛒 Cart Items: {cartItems.length}
       </Link>
+      <button onClick={handleLogOut}>
+        Logout
+      </button>
+      </div>
+      
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {products.map((product) => (

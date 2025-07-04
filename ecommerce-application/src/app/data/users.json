@@ -2,16 +2,19 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123456"
+      "password": "123456",
+        "role": "admin"
     },
     {
       "id": 2,
       "username": "muthu",
-      "password": "pass123"
+      "password": "pass123",
+       "role": "user"
     },
     {
       "id": 3,
       "username": "john",
-      "password": "doe123"
+      "password": "doe123",
+       "role": "user"
     }
   ]

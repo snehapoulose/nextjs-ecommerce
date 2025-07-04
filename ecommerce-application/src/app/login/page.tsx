@@ -17,6 +17,7 @@ export default function LoginPage() {
         password: form.get("password"),
       }),
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     });
 
     const data = await res.json();

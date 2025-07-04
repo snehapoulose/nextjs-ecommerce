@@ -6,3 +6,8 @@ export interface Product {
   isNew: boolean;
   image: string;
 }
+
+export enum RoleTypes  {
+admin = "admin",
+user = "user",
+}
