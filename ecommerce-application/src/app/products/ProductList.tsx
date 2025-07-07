@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Product } from "../types/products";
+import { Product, ProductProps } from "../types/products";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
@@ -9,11 +9,9 @@ import { addToCart } from "../redux/slices/cartSlice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-interface Props {
-  initialProducts: Product[];
-}
 
-export default function ProductListClient({ initialProducts }: Props) {
+
+export default function ProductListClient({ initialProducts }: ProductProps) {
   const router = useRouter()
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
